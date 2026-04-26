@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>OSIS SMP INSAN TERPADU | Berkarakter & Berprestasi</title>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f8fafc;
+            color: #0f172a;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #e2e8f0;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #10b981;
+            border-radius: 10px;
+        }
+
+        /* navbar hijau islami */
+        .navbar {
+            background: rgba(255,255,255,0.98);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+            padding: 0.9rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            border-bottom: 2px solid #10b981;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .logo i {
+            font-size: 2.2rem;
+            color: #059669;
+        }
+        .logo h1 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #065f46, #10b981);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+        .logo p {
+            font-size: 0.7rem;
+            color: #475569;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        .nav-links a {
+            text-decoration: none;
+            font-weight: 600;
+            color: #1e293b;
+            transition: 0.2s;
+            font-size: 1rem;
+        }
+        .nav-links a:hover {
+            color: #059669;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.6rem;
+            cursor: pointer;
+            color: #065f46;
+        }
+
+        /* hero */
+        .hero {
+            background: linear-gradient(105deg, #022c22 0%, #065f46 100%);
+            color: white;
+            text-align: center;
+            padding: 5rem 2rem;
+            position: relative;
+        }
+        .hero::before {
+            content: "🤝";
+            font-size: 180px;
+            opacity: 0.05;
+            position: absolute;
+            bottom: 10px;
+            right: 20px;
+        }
+        .hero h2 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+        .hero span {
+            color: #fde047;
+        }
+        .hero p {
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            font-size: 1.2rem;
+            opacity: 0.92;
+        }
+        .btn-primary {
+            background: #facc15;
+            color: #022c22;
+            padding: 0.8rem 2rem;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: 0.2s;
+            box-shadow: 0 8px 18px rgba(0,0,0,0.2);
+        }
+        .btn-primary:hover {
+            background: #eab308;
+            transform: translateY(-3px);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+            color: #064e3b;
+        }
+        .section-title:after {
+            content: "";
+            width: 80px;
+            height: 4px;
+            background: #10b981;
+            display: block;
+            margin: 12px auto 0;
+            border-radius: 4px;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem;
+        }
+        .card {
+            background: white;
+            border-radius: 28px;
+            padding: 1.8rem;
+            text-align: center;
+            box-shadow: 0 10px 20px -5px rgba(0,0,0,0.05);
+            transition: all 0.25s;
+            border: 1px solid #e2e8f0;
+        }
+        .card:hover {
+            transform: translateY(-8px);
+            border-color: #10b981;
+            box-shadow: 0 24px 36px -12px rgba(16,185,129,0.2);
+        }
+        .card i {
+            font-size: 2.6rem;
+            color: #059669;
+            margin-bottom: 1rem;
+        }
+        .card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .program-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+        .program-badge {
+            background: #ecfdf5;
+            border-radius: 100px;
+            padding: 0.6rem 1.4rem;
+            font-weight: 600;
+            color: #065f46;
+            font-size: 0.9rem;
+        }
+
+        .prestasi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.8rem;
+        }
+        .prestasi-item {
+            background: white;
+            border-radius: 28px;
+            padding: 1.6rem;
+            border-left: 6px solid #facc15;
+            box-shadow: 0 8px 18px rgba(0,0,0,0.03);
+        }
+
+        .galeri {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.3rem;
+        }
+        .galeri-item {
+            background: #d1d5db;
+            border-radius: 24px;
+            height: 180px;
+            background-size: cover;
+            background-position: center;
+            transition: 0.2s;
+            box-shadow: 0 10px 18px rgba(0,0,0,0.05);
+        }
+        .galeri-item:hover {
+            transform: scale(1.02);
+        }
+
+        footer {
+            background: #022c22;
+            color: #d1d5db;
+            padding: 2rem;
+            text-align: center;
+        }
+        .sosmed a {
+            color: white;
+            margin: 0 0.8rem;
+            font-size: 1.4rem;
+            display: inline-block;
+            transition: 0.2s;
+        }
+        .sosmed a:hover {
+            color: #facc15;
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                background: white;
+                width: 80%;
+                height: 100vh;
+                flex-direction: column;
+                align-items: center;
+                justify-content: start;
+                padding-top: 2rem;
+                transition: 0.3s;
+                gap: 1.6rem;
+                box-shadow: 4px 0 20px rgba(0,0,0,0.08);
+                z-index: 999;
+            }
+            .nav-links.active {
+                left: 0;
+            }
+            .hero h2 {
+                font-size: 2rem;
+            }
+            .container {
+                padding: 2rem 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="logo">
+        <i class="fas fa-mosque"></i>
+        <div>
+            <h1>OSIS SMP IT</h1>
+            <p>Insan Terpadu | Berakhlak Mulia</p>
+        </div>
+    </div>
+    <div class="menu-toggle" id="mobile-menu">
+        <i class="fas fa-bars"></i>
+    </div>
+    <ul class="nav-links" id="nav-list">
+        <li><a href="#home">Beranda</a></li>
+        <li><a href="#tentang">Profil</a></li>
+        <li><a href="#program">Program</a></li>
+        <li><a href="#prestasi">Prestasi</a></li>
+        <li><a href="#galeri">Galeri</a></li>
+        <li><a href="#kontak">Kontak</a></li>
+    </ul>
+</nav>
+
+<section id="home" class="hero">
+    <h2>OSIS <span>SMP INSAN TERPADU</span></h2>
+    <p>Bersama membangun generasi Qur'ani, kreatif, dan berdaya saing global. Wadah pemimpin masa depan yang berintegritas.</p>
+    <a href="#program" class="btn-primary"><i class="fas fa-calendar-alt"></i> Ekskul & Program</a>
+</section>
+
+<div class="container" id="tentang">
+    <div class="section-title">🏫 Tentang OSIS Insan Terpadu</div>
+    <div style="display: flex; flex-wrap: wrap; gap: 2rem; align-items: center;">
+        <div style="flex:1; min-width: 200px;">
+            <img src="https://placehold.co/500x400/ecfdf5/065f46?text=OSIS+SMP+IT" style="width:100%; border-radius: 32px; box-shadow: 0 20px 25px -12px rgba(0,0,0,0.1);" alt="kegiatan osis">
+        </div>
+        <div style="flex:1;">
+            <h3 style="font-size: 1.6rem; margin-bottom: 1rem; color:#065f46;">Visi & Misi</h3>
+            <p><strong>Visi:</strong> Menjadi organisasi siswa yang unggul dalam kepemimpinan, berlandaskan nilai Islam, serta menginspirasi perubahan positif di lingkungan sekolah.</p>
+            <p style="margin-top: 1rem;"><strong>Misi:</strong> Menguatkan ukhuwah Islamiyah, mengembangkan bakat minat siswa, dan menjadi jembatan aspirasi santri/siswa menuju sekolah yang rahmatan lil 'alamin.</p>
+            <div style="margin-top: 1.5rem;">
+                <span style="background:#d1fae5; padding:0.4rem 1rem; border-radius:40px; font-weight:600;">#OSISITPeduli</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container" id="program">
+    <div class="section-title">📌 Program Kerja Unggulan</div>
+    <div class="card-grid">
+        <div class="card"><i class="fas fa-book-quran"></i><h3>Tahfidz Camp & Dauroh</h3><p>Kegiatan menghafal Al-Qur'an bersama dan mentoring islami setiap pekan.</p></div>
+        <div class="card"><i class="fas fa-hand-holding-heart"></i><h3>Peduli Sesama</h3><p>Bakti sosial, Sedekah, dan aksi kemanusiaan rutin.</p></div>
+        <div class="card"><i class="fas fa-microphone-alt"></i><h3>Pidato 2 Bahasa</h3><p>English, Indonesia – lomba public speaking.</p></div>
+        <div class="card"><i class="fas fa-laptop-code"></i><h3>Techno Teens</h3><p>Pelatihan coding dasar, dan desain grafis</p></div>
+    </div>
+    <div class="program-list">
+        <span class="program-badge"><i class="fas fa-Karate"></i> Silat Competition</span>
+        <span class="program-badge"><i class="fas fa-palette"></i> Islamic Art Festival</span>
+        <span class="program-badge"><i class="fas fa-Batik"></i> Batik Art</span>
+        <span class="program-badge"><i class="fas fa-chalkboard"></i> Olimpiade Sains</span>
+    </div>
+</div>
+
+<div class="container" id="prestasi">
+    <div class="section-title">🏆 Prestasi Kebanggaan</div>
+    <div class="prestasi-grid">
+        <div class="prestasi-item"><i class="fas fa-trophy" style="font-size:2rem; color:#facc15;"></i><h3 style="margin: 10px 0;">Juara 1 SILAT</h3><p>BUPATI CUP PROBOLINGGO</p></div>
+        <div class="prestasi-item"><i class="fas fa-medal" style="font-size:2rem; color:#059669;"></i><h3 style="margin: 10px 0;">Juara 2 SILAT</h3><p>>BUPATI CUP PROBOLINGGO</p></div>
+        <div class="prestasi-item"><i class="fas fa-award" style="font-size:2rem; color:#f97316;"></i><h3 style="margin: 10px 0;">PASCAL 2023 </h3><p>Meraih 5 video terbaik pada Holiday Project</p></div>
+        <div class="prestasi-item"><i class="fas fa-users" style="font-size:2rem; color:#3b82f6;"></i><h3 style="margin: 10px 0;">Nasional School</h3><p>Sekolah Nasional Yang di minati banyak orang</p></div>
+    </div>
+</div>
+
+<div class="container" id="galeri">
+    <div class="section-title">📸 Galeri Kegiatan Santri</div>
+    <div class="galeri">
+        <div class="galeri-item" style="background-image: url('https://files.catbox.moe/1fpenc.jpg');"></div>
+        <div class="galeri-item" style="background-image: url('https://files.catbox.moe/ll0khl.jpg');"></div>
+        <div class="galeri-item" style="background-image: url('https://files.catbox.moe/laikkr.jpg');"></div>
+        <div class="galeri-item" style="background-image: url('https://files.catbox.moe/drx83s.jpg');"></div>
+    </div>
+</div>
+
+<div class="container" id="kontak">
+    <div class="section-title">📞 Hubungi Sekretariat OSIS</div>
+    <div style="display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center;">
+        <div style="background: white; border-radius: 32px; padding: 1.5rem; min-width: 220px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+            <i class="fab fa-instagram" style="font-size: 2rem; color:#c13584;"></i>
+            <h3>@SMPINSANTERPADU</h3>
+            <p>Media keseharian</p>
+        </div>
+        <div style="background: white; border-radius: 32px; padding: 1.5rem; min-width: 220px; text-align: center;">
+            <i class="fab fa-youtube" style="font-size: 2rem; color:#ff0000;"></i>
+            <h3>INSAN TERPADU</h3>
+            <p>Dokumentasi Projek</p>
+        </div>
+        <div style="background: white; border-radius: 32px; padding: 1.5rem; min-width: 220px; text-align: center;">
+            <i class="fas fa-envelope" style="font-size: 2rem; color:#10b981;"></i>
+            <h3>osintra.smart@gmail.com</h3>
+            <p>Email resmi & kritik</p>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="sosmed">
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+        <a href="#"><i class="fab fa-tiktok"></i></a>
+        <a href="#"><i class="fab fa-whatsapp"></i></a>
+    </div>
+    <p style="margin-top: 1rem;">© 2010 OSIS SMP Insan Terpadu - Berakhlak, Berilmu, Berprestasi</p>
+    <p style="font-size: 0.75rem;">#SMPITGenerasiJuara #OSISPeduliUmat</p>
+</footer>
+
+<script>
+    const mobileBtn = document.getElementById('mobile-menu');
+    const navList = document.getElementById('nav-list');
+    mobileBtn.addEventListener('click', () => {
+        navList.classList.toggle('active');
+    });
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            navList.classList.remove('active');
+        });
+    });
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if(target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+    });
+</script>
+</body>
+</html>
